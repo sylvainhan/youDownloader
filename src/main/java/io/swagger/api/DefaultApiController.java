@@ -48,7 +48,7 @@ public class DefaultApiController implements DefaultApi {
 	public ResponseEntity<byte[]> rootGet(
 			@NotNull @ApiParam(value = "", required = true) @Valid @RequestParam(value = "url", required = true) List<String> url) {
 		String accept = request.getHeader("Accept");
-		
+
 		byte[] by = null;
 		if (accept != null && accept.contains("video/mp4")) {
 
@@ -60,21 +60,26 @@ public class DefaultApiController implements DefaultApi {
 
 					ResponseEntity<ExternalDocs> eDocs = new ResponseEntity<ExternalDocs>(
 							objectMapper.readValue(html, ExternalDocs.class), HttpStatus.NOT_IMPLEMENTED);
-					log.error(eDocs.getBody().getTitle());
-					log.error(eDocs.getBody().getStreams().get(0).getUrl());
+					
 
-					by = downloadUrl(new URL(eDocs.getBody().getStreams().get(0).getUrl()));
+						log.error(urlUni + " - " + eDocs.getBody().getTitle());
+//					if (eDocs.getBody().getTitle().contains("圆桌")) {
+						log.error(eDocs.getBody().getStreams().get(0).getUrl());
 
-					Path path = Paths.get("D:\\2019\\" + eDocs.getBody().getTitle() + ".mp4");
-					Files.write(path, by);
+						by = downloadUrl(new URL(eDocs.getBody().getStreams().get(0).getUrl()));
 
-					// log.error(by.toString());
+						Path path = Paths.get("D:\\2019\\" + eDocs.getBody().getTitle().replaceAll("[\\\\/:*?\"<>|]", "").trim() + ".mp4");
+						Files.write(path, by);
 
+//					}
 
-				} catch (IOException e) {
-					log.error("Couldn't serialize response for content type application/json", e);
-					return new ResponseEntity<byte[]>(HttpStatus.INTERNAL_SERVER_ERROR);
+				} catch (Exception e) {
+					e.printStackTrace();
+					continue;
 				}
+//				catch (IOException e) {
+//					return new ResponseEntity<byte[]>(HttpStatus.INTERNAL_SERVER_ERROR);
+//				}
 			}
 		}
 
