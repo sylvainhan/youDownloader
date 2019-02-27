@@ -1,0 +1,193 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is a sample server Petstore server.  You can find out more about     Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).      For this sample, you can use the api key `special-key` to test the authorization     filters.",
+    "version": "1.0.0",
+    "title": "Swagger Petstore"
+  },
+  "host": "getvideo.p.mashape.com",
+  "basePath": "/",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "url",
+            "in": "query",
+            "required": true,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/externalDocs"
+            }
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "externalDocs": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "title": "The Status Schema"
+        },
+        "message": {
+          "type": "string",
+          "title": "The Message Schema"
+        },
+        "description": {
+          "type": "string",
+          "title": "The Description Schema"
+        },
+        "uploader": {
+          "type": "string",
+          "title": "The Uploader Schema"
+        },
+        "url": {
+          "type": "string",
+          "title": "The Url Schema"
+        },
+        "id": {
+          "type": "string",
+          "title": "The Id Schema"
+        },
+        "is_playlist": {
+          "type": "boolean",
+          "title": "The Is_playlist Schema"
+        },
+        "site": {
+          "type": "string",
+          "title": "The Site Schema"
+        },
+        "title": {
+          "type": "string",
+          "title": "The Title Schema"
+        },
+        "like_count": {
+          "type": "integer",
+          "title": "The Like_count Schema"
+        },
+        "dislike_count": {
+          "type": "integer",
+          "title": "The Dislike_count Schema"
+        },
+        "view_count": {
+          "type": "integer",
+          "title": "The View_count Schema"
+        },
+        "duration": {
+          "type": "integer",
+          "title": "The Duration Schema"
+        },
+        "upload_date": {
+          "type": "string",
+          "title": "The Upload_date Schema"
+        },
+        "tags": {
+          "type": "array",
+          "title": "The Tags Schema",
+          "items": {
+            "type": "string",
+            "title": "The Items Schema"
+          }
+        },
+        "uploader_url": {
+          "type": "string",
+          "title": "The Uploader_url Schema"
+        },
+        "thumbnail": {
+          "type": "string",
+          "title": "The Thumbnail Schema"
+        },
+        "streams": {
+          "type": "array",
+          "title": "The Streams Schema",
+          "items": {
+            "type": "object",
+            "title": "The Items Schema",
+            "properties": {
+              "url": {
+                "type": "string",
+                "title": "The Url Schema"
+              },
+              "format": {
+                "type": "string",
+                "title": "The Format Schema"
+              },
+              "format_note": {
+                "type": "string",
+                "title": "The Format_note Schema"
+              },
+              "extension": {
+                "type": "string",
+                "title": "The Extension Schema"
+              },
+              "video_codec": {
+                "type": "string",
+                "title": "The Video_codec Schema"
+              },
+              "audio_codec": {
+                "type": "string",
+                "title": "The Audio_codec Schema"
+              },
+              "height": {
+                "type": "integer",
+                "title": "The Height Schema"
+              },
+              "width": {
+                "type": "integer",
+                "title": "The Width Schema"
+              },
+              "fps": {
+                "type": "null",
+                "title": "The Fps Schema"
+              },
+              "fmt_id": {
+                "type": "string",
+                "title": "The Fmt_id Schema"
+              },
+              "filesize": {
+                "type": "integer",
+                "title": "The Filesize Schema"
+              },
+              "filesize_pretty": {
+                "type": "string",
+                "title": "The Filesize_pretty Schema"
+              },
+              "has_audio": {
+                "type": "boolean",
+                "title": "The Has_audio Schema"
+              },
+              "has_video": {
+                "type": "boolean",
+                "title": "The Has_video Schema"
+              },
+              "is_hd": {
+                "type": "boolean",
+                "title": "The Is_hd Schema"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
