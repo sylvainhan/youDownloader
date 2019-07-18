@@ -61,7 +61,7 @@ public class ClientApi {
         
         final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
         final HttpHeaders headerParams = new HttpHeaders();
-        headerParams.add("X-Mashape-Key", "BfI1deJR4ymshveRhRxlybuECfj5p1idNnCjsnrFL6ik0UJFNm");
+        headerParams.add("X-Mashape-Key", "1a7db9be4cmsh7284d5972dab6e6p16462ejsn790ea6edd13d");
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
         
         queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase()), "url", url));
@@ -91,7 +91,7 @@ public class ClientApi {
         
         final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
         final HttpHeaders headerParams = new HttpHeaders();
-        headerParams.add("X-Mashape-Key", "BfI1deJR4ymshveRhRxlybuECfj5p1idNnCjsnrFL6ik0UJFNm");
+        headerParams.add("X-Mashape-Key", "1a7db9be4cmsh7284d5972dab6e6p16462ejsn790ea6edd13d");
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
         
         queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase()), "url", url));

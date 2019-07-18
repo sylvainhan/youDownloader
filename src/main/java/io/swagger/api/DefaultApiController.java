@@ -45,7 +45,7 @@ public class DefaultApiController implements DefaultApi {
 		this.clientApi = clientApi;
 	}
 
-	public ResponseEntity<byte[]> rootGet(
+	public ResponseEntity<byte[]> videoGet(
 			@NotNull @ApiParam(value = "", required = true) @Valid @RequestParam(value = "url", required = true) List<String> url) {
 		String accept = request.getHeader("Accept");
 
@@ -60,7 +60,6 @@ public class DefaultApiController implements DefaultApi {
 
 					ResponseEntity<ExternalDocs> eDocs = new ResponseEntity<ExternalDocs>(
 							objectMapper.readValue(html, ExternalDocs.class), HttpStatus.NOT_IMPLEMENTED);
-					
 
 						log.error(urlUni + " - " + eDocs.getBody().getTitle());
 //					if (eDocs.getBody().getTitle().contains("圆桌")) {
@@ -105,5 +104,37 @@ public class DefaultApiController implements DefaultApi {
 
 		return outputStream.toByteArray();
 	}
+
+	@Override
+	public ResponseEntity<byte[]> mp3Get(
+			@NotNull @Valid @RequestParam(value = "url", required = true) List<String> url) {
+		String accept = request.getHeader("Accept");
+
+		byte[] by = null;
+		if (accept != null && accept.contains("audio/mpeg")) {
+
+			for (String urlUni : url) {
+				try {
+//					if (eDocs.getBody().getTitle().contains("圆桌")) {
+
+						by = downloadUrl(new URL(urlUni));
+
+						Path path = Paths.get("D:\\YT_MP3\\" + urlUni.replaceAll("[\\\\/:*?\"<>|]", "").trim() + ".mp4");
+						Files.write(path, by);
+//					}
+
+				} catch (Exception e) {
+					e.printStackTrace();
+					continue;
+				}
+//				catch (IOException e) {
+//					return new ResponseEntity<byte[]>(HttpStatus.INTERNAL_SERVER_ERROR);
+//				}
+			}
+		}
+
+		return new ResponseEntity<byte[]>(by, HttpStatus.OK);
+	}
+
 
 }

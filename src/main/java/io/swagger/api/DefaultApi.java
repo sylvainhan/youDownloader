@@ -32,6 +32,16 @@ public interface DefaultApi {
     @RequestMapping(value = "/youdown",
         produces = { "video/mp4" }, 
         method = RequestMethod.GET)
-    ResponseEntity<byte[]> rootGet(@NotNull @ApiParam(value = "", required = true) @Valid @RequestParam(value = "url", required = true) List<String> url);
+    ResponseEntity<byte[]> videoGet(@NotNull @ApiParam(value = "", required = true) @Valid @RequestParam(value = "url", required = true) List<String> url);
+
+    
+    @ApiOperation(value = "", nickname = "rootGet", notes = "", response = ExternalDocs.class, tags={  })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "successful operation", response = ExternalDocs.class),
+        @ApiResponse(code = 400, message = "Invalid status value") })
+    @RequestMapping(value = "/audiodown",
+        produces = { "audio/mpeg" }, 
+        method = RequestMethod.GET)
+    ResponseEntity<byte[]> mp3Get(@NotNull @ApiParam(value = "", required = true) @Valid @RequestParam(value = "url", required = true) List<String> url);
 
 }
