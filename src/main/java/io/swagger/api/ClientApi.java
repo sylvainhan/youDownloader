@@ -18,9 +18,10 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import io.swagger.ApiClient;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-02-05T23:30:35.970+01:00")
 @Component("io.swagger.client.api.DefaultApi")
 public class ClientApi {
+	private static final String API_KEY = "1a7db9be4cmsh7284d5972dab6e6p16462ejsn790ea6edd13d";
+	
     private ApiClient apiClient;
 
     public ClientApi() {
@@ -61,7 +62,7 @@ public class ClientApi {
         
         final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
         final HttpHeaders headerParams = new HttpHeaders();
-        headerParams.add("X-Mashape-Key", "1a7db9be4cmsh7284d5972dab6e6p16462ejsn790ea6edd13d");
+        headerParams.add("X-Mashape-Key", API_KEY);
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
         
         queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase()), "url", url));
@@ -79,6 +80,12 @@ public class ClientApi {
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     
+	/**
+	 * 
+	 * @param url
+	 * @return
+	 * @throws RestClientException
+	 */
     public String downloadFile(String url) throws RestClientException {
         Object postBody = null;
         
@@ -91,7 +98,7 @@ public class ClientApi {
         
         final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
         final HttpHeaders headerParams = new HttpHeaders();
-        headerParams.add("X-Mashape-Key", "1a7db9be4cmsh7284d5972dab6e6p16462ejsn790ea6edd13d");
+        headerParams.add("X-Mashape-Key", API_KEY);
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
         
         queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase()), "url", url));

@@ -59,26 +59,24 @@ public class DefaultApiController implements DefaultApi {
 				try {
 
 					ResponseEntity<ExternalDocs> eDocs = new ResponseEntity<ExternalDocs>(
-							objectMapper.readValue(html, ExternalDocs.class), HttpStatus.NOT_IMPLEMENTED);
+							objectMapper.readValue(html, ExternalDocs.class), HttpStatus.ACCEPTED);
 
-						log.error(urlUni + " - " + eDocs.getBody().getTitle());
-//					if (eDocs.getBody().getTitle().contains("圆桌")) {
-						log.error(eDocs.getBody().getStreams().get(0).getUrl());
+					log.info(urlUni + " - " + eDocs.getBody().getTitle());
+					if (eDocs.getBody().getStreams() != null) {
+						log.info(eDocs.getBody().getStreams().get(0).getUrl());
 
 						by = downloadUrl(new URL(eDocs.getBody().getStreams().get(0).getUrl()));
 
-						Path path = Paths.get("D:\\2019\\" + eDocs.getBody().getTitle().replaceAll("[\\\\/:*?\"<>|]", "").trim() + ".mp4");
+						Path path = Paths.get("Z:\\vids\\"
+								+ eDocs.getBody().getTitle().replaceAll("[\\\\/:*?\"<>|]", "").trim() + ".mp4");
 						Files.write(path, by);
 
-//					}
+					}
 
 				} catch (Exception e) {
 					e.printStackTrace();
 					continue;
 				}
-//				catch (IOException e) {
-//					return new ResponseEntity<byte[]>(HttpStatus.INTERNAL_SERVER_ERROR);
-//				}
 			}
 		}
 
@@ -115,26 +113,25 @@ public class DefaultApiController implements DefaultApi {
 
 			for (String urlUni : url) {
 				try {
-//					if (eDocs.getBody().getTitle().contains("圆桌")) {
+					// if (eDocs.getBody().getTitle().contains("圆桌")) {
 
-						by = downloadUrl(new URL(urlUni));
+					by = downloadUrl(new URL(urlUni));
 
-						Path path = Paths.get("D:\\YT_MP3\\" + urlUni.replaceAll("[\\\\/:*?\"<>|]", "").trim() + ".mp4");
-						Files.write(path, by);
-//					}
+					Path path = Paths.get("D:\\YT_MP3\\" + urlUni.replaceAll("[\\\\/:*?\"<>|]", "").trim() + ".mp3");
+					Files.write(path, by);
+					// }
 
 				} catch (Exception e) {
 					e.printStackTrace();
 					continue;
 				}
-//				catch (IOException e) {
-//					return new ResponseEntity<byte[]>(HttpStatus.INTERNAL_SERVER_ERROR);
-//				}
+				// catch (IOException e) {
+				// return new ResponseEntity<byte[]>(HttpStatus.INTERNAL_SERVER_ERROR);
+				// }
 			}
 		}
 
 		return new ResponseEntity<byte[]>(by, HttpStatus.OK);
 	}
-
 
 }
